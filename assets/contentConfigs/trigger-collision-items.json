@@ -1,0 +1,68 @@
+[
+        {
+            "asset" : "chair",
+            "options" : [
+                {"scale" : 0.1}
+            ],
+            "instances" : [
+                {"x" : 50, "y" : 200}
+            ],
+            "event" : "found chair",
+            "message" : "greetings"
+        },
+        {
+            "asset" : "shelf",
+            "options" : [
+                {"scale" : 10}
+            ],
+            "instances" : [
+                {"x" : 550, "y" : 450}
+            ],
+            "event" : "found shelf",
+            "message" : "greetings"
+        },
+        {
+            "asset" : "plant",
+            "options" : [
+                {"scale" : 10}
+            ],
+            "instances" : [
+                {"x" : 800, "y" : 400}
+            ],
+            "event" : "found plant",
+            "message" : "found"
+        },
+        {
+            "asset" : "fridge",
+            "options" : [
+                {"scale" : 10}
+            ],
+            "instances" : [
+                {"x" : 1200, "y" : 400}
+            ],
+            "event" : "found fridge",
+            "message" : "found"
+        },
+        {
+            "asset" : "door-closed",
+            "options" : [
+                {"scale" : 10}
+            ],
+            "instances" : [
+                {"x" : 1590, "y" : 400}
+            ],
+            "event" : "found door-closed",
+            "message" : "finish"
+        },
+        {
+            "asset" : "door-open",
+            "options" : [
+                {"scale" : 0.1}
+            ],
+            "instances" : [
+                {"x" : 1590, "y" : 0}
+            ],
+            "event" : "found door-open",
+            "message" : "finish"
+        }
+    ]

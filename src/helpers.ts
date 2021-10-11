@@ -52,26 +52,26 @@ export function createTextBubble (scene: GameScene, width, height, quote, bubble
     return bitmapText;
   }
 
-  export function collectItem (player, item)
-  {
-    //
-    this.events.emit(item.event, item.text)
-    if (item.event == 'message4') {
-      item.disableBody(true, true);
-      item = item.secondObj
-      item.enableBody(true, 1590, 580, true, true);
-      
-    }
-  }
-
-  export function messageHandler(text) {
-    console.log(window.innerWidth);
-    let charPixelWidth = 30;
-    let width = text.length * charPixelWidth > 1000 ? 1000 : text.length * charPixelWidth;
+export function collectItem (player, item)
+{
+  //
+  this.events.emit(item.event, item.text)
+  if (item.event == 'message4') {
+    item.disableBody(true, true);
+    item = item.secondObj
+    item.enableBody(true, 1590, 580, true, true);
     
-    let height = Math.ceil((text.length * charPixelWidth)/1000) * charPixelWidth;
-    this.message1 = createTextBubble(this, width + 100, height + (charPixelWidth * 2), text, this.bubble1, this.message1);
-    console.log(this.messageFSM.state);
-    this.messageFSM.transition('idle');
-    this.messageFSM.transition('show');
   }
+}
+
+export function messageHandler(text) {
+  console.log(window.innerWidth);
+  let charPixelWidth = 30;
+  let width = text.length * charPixelWidth > 1000 ? 1000 : text.length * charPixelWidth;
+  
+  let height = Math.ceil((text.length * charPixelWidth)/1000) * charPixelWidth;
+  this.message1 = createTextBubble(this, width + 100, height + (charPixelWidth * 2), text, this.bubble1, this.message1);
+  console.log(this.messageFSM.state);
+  this.messageFSM.transition('idle');
+  this.messageFSM.transition('show');
+}

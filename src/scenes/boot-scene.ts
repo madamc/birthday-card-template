@@ -6,6 +6,10 @@ const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
   key: 'Boot',
 };
 
+const ANIMATED_ITEMS = "animated-items";
+const BACKGROUND_ITEMS = "background-items";
+const TRIGGER_COLLISION_ITEMS = "trigger-collision-items";
+const PLATFORM_ITEMS = "platform-items";
 /**
  * The initial scene that loads all necessary assets to the game and displays a loading bar.
  */
@@ -57,11 +61,14 @@ export class BootScene extends Phaser.Scene {
       assetText.destroy();
       progressBar.destroy();
       progressBarContainer.destroy();
-
+      this.loadAssets();
       this.scene.start('MainMenu');
     });
 
-    this.loadAssets();
+    this.load.json('animated-items', 'assets/contentConfigs/animated-items.json') as Phaser.Loader.LoaderPlugin;
+    this.load.json('background-items', 'assets/contentConfigs/background-items.json')  as Phaser.Loader.LoaderPlugin;
+    this.load.json('messages', 'assets/contentConfigs/messages.json')  as Phaser.Loader.LoaderPlugin;
+    this.load.json('trigger-collision-items', 'assets/contentConfigs/trigger-collision-items.json')  as Phaser.Loader.LoaderPlugin;
   }
 
   /**
@@ -71,21 +78,60 @@ export class BootScene extends Phaser.Scene {
    */
   private loadAssets() {
     // Load sample assets
-
-    // Source: Open Game Art
-    this.load.image('man', 'assets/sprites/character.png');
-    this.load.image('sky', 'assets/sprites/sky.png');
-    this.load.image('road', 'assets/sprites/road.png');
-    this.load.spritesheet('buildings', 'assets/sprites/buildings.png', { frameWidth: 64, frameHeight: 96 });
-    this.load.spritesheet('runchase', 'assets/sprites/Runners-Sheet.png', { frameWidth: 20, frameHeight: 20 });
-    this.load.spritesheet('block', 'assets/sprites/DummySquare-Sheet.png', { frameWidth: 8, frameHeight: 8 });
-    this.load.spritesheet('block2', 'assets/sprites/DummySquare-Sheet2.png', { frameWidth: 8, frameHeight: 8 });
-    this.load.audio('song', 'assets/sounds/runnersandchasers1.mp3');
-    this.load.audio('playershot', 'assets/sounds/playershot.wav');
-    this.load.audio('playerdied', 'assets/sounds/playerdie.wav');
-    this.load.audio('chasershot', 'assets/sounds/chasershot.wav');
-    this.load.audio('chaserdied', 'assets/sounds/chaserdie.wav');
+    console.log("hellio");
+    console.log(this.cache.json.entries.entries);
+    
+    this.cache.json.entries.each(map => {
+      let arr = Array.from(this.cache.json.entries.get(map));
+      switch (map) {
+        case ANIMATED_ITEMS:
+          arr.forEach((element:any) => {
+            console.log(element.asset);
+            this.load.spritesheet(
+              element.asset,
+              element.properties.spritesheet.filepath, 
+              {
+                frameWidth: element.properties.spritesheet.framewidth,
+                frameHeight: element.properties.spritesheet.frameheight
+              });
+          });
+          break;
+        case BACKGROUND_ITEMS:
+          arr.forEach((element:any) => {
+            console.log(element.asset);
+            this.load.image(
+              element.asset,
+              element.properties.spritesheet.filepath);
+          });
+          break;
+        case PLATFORM_ITEMS:
+          break;
+        case TRIGGER_COLLISION_ITEMS:
+          break;
+        default:
+          break;
+      }
+    });
+    
     this.load.bitmapFont('atari', 'assets/sprites/atari-classic-b.png', 'assets/sprites/atari-classic.xml');
-    this.load.bitmapFont('atari-w', 'assets/sprites/atari-classic.png', 'assets/sprites/atari-classic.xml');
+    this.load.spritesheet('block', 'assets/sprites/EC-floor.png', { frameWidth: 8, frameHeight: 8 });
+    this.load.spritesheet('reeny', 'assets/sprites/Reeny3-Sheet.png', {frameWidth: 16, frameHeight: 16});
+    this.load.image('backwall', 'assets/sprites/EC-home2.png');
+    this.load.image('window', 'assets/sprites/EC-window.png');
+    this.load.image('chair', 'assets/sprites/EC-chair.png');
+    this.load.image('desk', 'assets/sprites/EC-desk.png');
+    this.load.image('plant', 'assets/sprites/EC-plant.png');
+    this.load.image('fridge', 'assets/sprites/EC-fridge.png');
+    this.load.image('shelf', 'assets/sprites/EC-shelf.png');
+    this.load.image('door-open', 'assets/sprites/EC-door-o.png');
+    this.load.image('door-closed', 'assets/sprites/EC-door-c.png');
+    this.load.image('cabinets', 'assets/sprites/EC-cabinets.png');
+    this.load.image('sky', 'assets/sprites/EC-sky.png');
+    this.load.image('clouds', 'assets/sprites/EC-clouds.png');
+    this.load.image('offscreen', 'assets/sprites/offscreen.png');
+    this.load.image('floor', 'assets/sprites/EC-floor.png');
+    this.load.image('ice', 'assets/sprites/iceblock.png');
+    this.load.audio('song', 'assets/sounds/song.ogg');
+    this.load.audio('typing', 'assets/sounds/typing.ogg');
   }
 }

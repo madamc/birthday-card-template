@@ -12,6 +12,7 @@ const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
 export class MainMenuScene extends Phaser.Scene {
   constructor() {
     super(sceneConfig);
+    
   }
 
   public create(): void {
