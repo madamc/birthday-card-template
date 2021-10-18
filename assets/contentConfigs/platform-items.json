@@ -3,10 +3,11 @@
         "asset" : "floor",
         "filepath" : "assets/sprites/EC-floor.png",
         "options" : [
-            {"scale" : {
-                "x" : 300,
-                "y" : 10
-            }},
+            {"option" : "scale",
+                "value" : {
+                    "x" : 300,
+                    "y" : 10
+                }},
             {"refreshBody" : "true"}
         ],
         "instances" : [

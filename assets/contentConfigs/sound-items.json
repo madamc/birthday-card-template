@@ -1,0 +1,11 @@
+[
+    
+    {
+        "asset" : "song",
+        "filepath" : "assets/sounds/song.ogg"
+    },
+    {
+        "asset" : "typing",
+        "filepath" : "assets/sounds/typing.ogg"
+    }
+]

@@ -2,7 +2,11 @@
         {
             "asset" : "chair",
             "options" : [
-                {"scale" : 0.1}
+                {"option" : "scale",
+                    "value" : {
+                        "x" : 0.1,
+                        "y" : 1
+                    }}
             ],
             "instances" : [
                 {"x" : 50, "y" : 200}
@@ -13,7 +17,11 @@
         {
             "asset" : "shelf",
             "options" : [
-                {"scale" : 10}
+                {"option" : "scale",
+                    "value" : {
+                        "x" : 10,
+                        "y" : 1
+                    }}
             ],
             "instances" : [
                 {"x" : 550, "y" : 450}
@@ -24,7 +32,11 @@
         {
             "asset" : "plant",
             "options" : [
-                {"scale" : 10}
+                {"option" : "scale",
+                    "value" : {
+                        "x" : 10,
+                        "y" : 1
+                    }}
             ],
             "instances" : [
                 {"x" : 800, "y" : 400}
@@ -35,7 +47,11 @@
         {
             "asset" : "fridge",
             "options" : [
-                {"scale" : 10}
+                {"option" : "scale",
+                    "value" : {
+                        "x" : 10,
+                        "y" : 1
+                    }}
             ],
             "instances" : [
                 {"x" : 1200, "y" : 400}
@@ -46,7 +62,11 @@
         {
             "asset" : "door-closed",
             "options" : [
-                {"scale" : 10}
+                {"option" : "scale",
+                    "value" : {
+                        "x" : 10,
+                        "y" : 1
+                    }}
             ],
             "instances" : [
                 {"x" : 1590, "y" : 400}
@@ -57,7 +77,11 @@
         {
             "asset" : "door-open",
             "options" : [
-                {"scale" : 0.1}
+                {"option" : "scale",
+                    "value" : {
+                        "x" : 0.1,
+                        "y" : 1
+                    }}
             ],
             "instances" : [
                 {"x" : 1590, "y" : 0}

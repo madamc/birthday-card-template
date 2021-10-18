@@ -1,0 +1,8 @@
+
+[
+    {
+    "asset" : "atari",
+    "imagepath" : "assets/sprites/atari-classic-b.png",
+    "configpath" : "assets/sprites/atari-classic.xml"
+    }
+]

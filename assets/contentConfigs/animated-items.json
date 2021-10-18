@@ -1,41 +1,50 @@
 [
     {
         "asset" : "reeny",
-        "properties" : {
-            "spritesheet" : {
-                "filepath" : "assets/sprites/Reeny3-Sheet.png",
-                "framewidth" : 16,
-                "frameheight" : 16
+        "instances" : [
+            {"x" : 100, "y" : 400}
+        ],
+        "options" : [
+            {"option" : "scale",
+            "value" : {
+                "x" : 10,
+                "y" : 1
+            }}
+        ],
+        "spritesheet" : {
+            "filepath" : "assets/sprites/Reeny3-Sheet.png",
+            "framewidth" : 16,
+            "frameheight" : 16
+        },
+        "animations" : [ 
+            {
+                "key" : "idle",
+                "frames" : [
+                { "frame" : 0},
+                { "frame" : 1}
+                ],
+                "frameRate" : 2,
+                "repeate" : -1
             },
-            "animations" : [ 
-                {
-                    "key" : "idle",
-                    "frames" : [
-                    { "frame" : 0},
-                    { "frame" : 1}
-                    ],
-                    "frameRate" : 2,
-                    "repeate" : -1
-                },
-                {
-                    "key" : "right",
-                    "frames" : [
-                        { "frame" : 2},
-                        { "frame" : 3}
-                    ],
-                    "frameRate" : 4,
-                    "repeate" : -1
-                },
-                {
-                    "key" : "left",
-                    "frames" : [
-                        { "frame" : 2},
-                        { "frame" : 3}
-                    ],
-                    "frameRate" : 4,
-                    "repeate" : -1
-                }
-            ]
-        }
+            {
+                "key" : "right",
+                "frames" : [
+                    { "frame" : 2},
+                    { "frame" : 3}
+                ],
+                "frameRate" : 4,
+                "repeate" : -1
+            },
+            {
+                "key" : "left",
+                "frames" : [
+                    { "frame" : 2},
+                    { "frame" : 3}
+                ],
+                "frameRate" : 4,
+                "repeate" : -1
+            }
+        ]
+        
     }    
 ]

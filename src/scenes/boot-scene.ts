@@ -6,10 +6,12 @@ const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
   key: 'Boot',
 };
 
-const ANIMATED_ITEMS = "animated-items";
-const BACKGROUND_ITEMS = "background-items";
-const TRIGGER_COLLISION_ITEMS = "trigger-collision-items";
-const PLATFORM_ITEMS = "platform-items";
+export const ANIMATED_ITEMS = "animated-items";
+export const BACKGROUND_ITEMS = "background-items";
+export const TRIGGER_COLLISION_ITEMS = "trigger-collision-items";
+export const PLATFORM_ITEMS = "platform-items";
+export const SOUND_ITEMS = "sound-items";
+export const FONT_ITEMS = "font-items";
 /**
  * The initial scene that loads all necessary assets to the game and displays a loading bar.
  */
@@ -48,7 +50,11 @@ export class BootScene extends Phaser.Scene {
       progressBar.width = (progressBarWidth - 30) * value;
 
       const percent = value * 100;
-      percentText.setText(`${percent}%`);
+      percentText.setText(`${percent}%`); 
+    });  
+
+    this.load.on('filecomplete', (filename) => {
+      this.loadAssets(filename);
     });
 
     this.load.on('fileprogress', (file) => {
@@ -61,14 +67,19 @@ export class BootScene extends Phaser.Scene {
       assetText.destroy();
       progressBar.destroy();
       progressBarContainer.destroy();
-      this.loadAssets();
+      
       this.scene.start('MainMenu');
     });
-
-    this.load.json('animated-items', 'assets/contentConfigs/animated-items.json') as Phaser.Loader.LoaderPlugin;
-    this.load.json('background-items', 'assets/contentConfigs/background-items.json')  as Phaser.Loader.LoaderPlugin;
-    this.load.json('messages', 'assets/contentConfigs/messages.json')  as Phaser.Loader.LoaderPlugin;
-    this.load.json('trigger-collision-items', 'assets/contentConfigs/trigger-collision-items.json')  as Phaser.Loader.LoaderPlugin;
+    //load the json resources so that when this scene completes loading, the assets can be loaded in
+    this.load.json(ANIMATED_ITEMS, 'assets/contentConfigs/animated-items.json');
+    this.load.json(BACKGROUND_ITEMS, 'assets/contentConfigs/background-items.json');
+    this.load.json(TRIGGER_COLLISION_ITEMS, 'assets/contentConfigs/trigger-collision-items.json');
+    this.load.json(PLATFORM_ITEMS, 'assets/contentConfigs/platform-items.json');
+    this.load.json(SOUND_ITEMS, 'assets/contentConfigs/sound-items.json');
+    this.load.json(FONT_ITEMS, 'assets/contentConfigs/font-items.json');
+    this.load.json('messages', 'assets/contentConfigs/messages.json');
+    // this.load.audio('song', 'assets/sounds/song.ogg');
+    // this.load.audio('typing', 'assets/sounds/typing.ogg');
   }
 
   /**
@@ -76,23 +87,25 @@ export class BootScene extends Phaser.Scene {
    * should be added to this method. Once loaded in, the loader will keep track of them, indepedent of which scene
    * is currently active, so they can be accessed anywhere.
    */
-  private loadAssets() {
+  public loadAssets(filename) {
     // Load sample assets
     console.log("hellio");
     console.log(this.cache.json.entries.entries);
     
-    this.cache.json.entries.each(map => {
-      let arr = Array.from(this.cache.json.entries.get(map));
-      switch (map) {
+    //this.cache.json.entries.each(map => {
+    if (this.cache.json.entries.get(filename) != undefined)
+    {
+      let arr = Array.from(this.cache.json.entries.get(filename));
+      switch (filename){
         case ANIMATED_ITEMS:
           arr.forEach((element:any) => {
             console.log(element.asset);
             this.load.spritesheet(
               element.asset,
-              element.properties.spritesheet.filepath, 
+              element.spritesheet.filepath, 
               {
-                frameWidth: element.properties.spritesheet.framewidth,
-                frameHeight: element.properties.spritesheet.frameheight
+                frameWidth: element.spritesheet.framewidth,
+                frameHeight: element.spritesheet.frameheight
               });
           });
           break;
@@ -101,37 +114,57 @@ export class BootScene extends Phaser.Scene {
             console.log(element.asset);
             this.load.image(
               element.asset,
-              element.properties.spritesheet.filepath);
+              element.filepath);
           });
+          
           break;
         case PLATFORM_ITEMS:
           break;
         case TRIGGER_COLLISION_ITEMS:
           break;
+        case SOUND_ITEMS:
+          arr.forEach((element:any) => {
+            console.log(element.asset);
+            this.load.audio(
+              element.asset,
+              element.filepath);
+          });
+          break;
+        case FONT_ITEMS:
+          arr.forEach((element:any) => {
+            console.log(element.asset);
+            this.load.bitmapFont(
+              element.asset,
+              element.imagepath,
+              element.configpath);
+          });
         default:
           break;
       }
-    });
-    
-    this.load.bitmapFont('atari', 'assets/sprites/atari-classic-b.png', 'assets/sprites/atari-classic.xml');
-    this.load.spritesheet('block', 'assets/sprites/EC-floor.png', { frameWidth: 8, frameHeight: 8 });
-    this.load.spritesheet('reeny', 'assets/sprites/Reeny3-Sheet.png', {frameWidth: 16, frameHeight: 16});
-    this.load.image('backwall', 'assets/sprites/EC-home2.png');
-    this.load.image('window', 'assets/sprites/EC-window.png');
-    this.load.image('chair', 'assets/sprites/EC-chair.png');
-    this.load.image('desk', 'assets/sprites/EC-desk.png');
-    this.load.image('plant', 'assets/sprites/EC-plant.png');
-    this.load.image('fridge', 'assets/sprites/EC-fridge.png');
-    this.load.image('shelf', 'assets/sprites/EC-shelf.png');
-    this.load.image('door-open', 'assets/sprites/EC-door-o.png');
-    this.load.image('door-closed', 'assets/sprites/EC-door-c.png');
-    this.load.image('cabinets', 'assets/sprites/EC-cabinets.png');
-    this.load.image('sky', 'assets/sprites/EC-sky.png');
-    this.load.image('clouds', 'assets/sprites/EC-clouds.png');
-    this.load.image('offscreen', 'assets/sprites/offscreen.png');
-    this.load.image('floor', 'assets/sprites/EC-floor.png');
-    this.load.image('ice', 'assets/sprites/iceblock.png');
-    this.load.audio('song', 'assets/sounds/song.ogg');
-    this.load.audio('typing', 'assets/sounds/typing.ogg');
+    }
+    else{
+      console.log(filename);
+    }
+    //});
+    // this.load.bitmapFont('atari', 'assets/sprites/atari-classic-b.png', 'assets/sprites/atari-classic.xml');
+    // this.load.spritesheet('block', 'assets/sprites/EC-floor.png', { frameWidth: 8, frameHeight: 8 });
+    // this.load.spritesheet('reeny', 'assets/sprites/Reeny3-Sheet.png', {frameWidth: 16, frameHeight: 16});
+    // this.load.image('backwall', 'assets/sprites/EC-home2.png');
+    // this.load.image('window', 'assets/sprites/EC-window.png');
+    // this.load.image('chair', 'assets/sprites/EC-chair.png');
+    // this.load.image('desk', 'assets/sprites/EC-desk.png');
+    // this.load.image('plant', 'assets/sprites/EC-plant.png');
+    // this.load.image('fridge', 'assets/sprites/EC-fridge.png');
+    // this.load.image('shelf', 'assets/sprites/EC-shelf.png');
+    // this.load.image('door-open', 'assets/sprites/EC-door-o.png');
+    // this.load.image('door-closed', 'assets/sprites/EC-door-c.png');
+    // this.load.image('cabinets', 'assets/sprites/EC-cabinets.png');
+    // this.load.image('sky', 'assets/sprites/EC-sky.png');
+    // this.load.image('clouds', 'assets/sprites/EC-clouds.png');
+    // this.load.image('offscreen', 'assets/sprites/offscreen.png');
+    // this.load.image('floor', 'assets/sprites/EC-floor.png');
+    // this.load.image('ice', 'assets/sprites/iceblock.png');
+    // this.load.audio('song', 'assets/sounds/song.ogg');
+    // this.load.audio('typing', 'assets/sounds/typing.ogg');
   }
 }
