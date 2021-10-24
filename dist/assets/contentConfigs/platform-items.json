@@ -1,7 +1,6 @@
 [
     {
         "asset" : "floor",
-        "filepath" : "assets/sprites/EC-floor.png",
         "frame" : 0,
         "options" : [
             {"option" : "scale",

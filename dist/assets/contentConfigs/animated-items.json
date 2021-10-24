@@ -13,11 +13,6 @@
             {"option" : "colliderWorldBounds",
             "value" : "true"}
         ],
-        "spritesheet" : {
-            "filepath" : "assets/sprites/Reeny3-Sheet.png",
-            "framewidth" : 16,
-            "frameheight" : 16
-        },
         "animations" : [ 
             {
                 "key" : "idle",

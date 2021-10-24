@@ -1,7 +1,6 @@
 [
     {
         "asset" : "sky",
-        "filepath" : "assets/sprites/EC-sky.png",
         "options" : [
             {"option" : "scale",
                 "value" : {
@@ -15,7 +14,6 @@
     },
     {
         "asset" : "clouds",
-        "filepath" : "assets/sprites/EC-clouds.png",
         "options" : [
             {"option" : "scale",
                 "value" : {
@@ -30,7 +28,6 @@
     },
     {
         "asset" : "backwall",
-        "filepath" : "assets/sprites/EC-home2.png",
         "options" : [
             {"option" : "scale",
                 "value" : {
@@ -46,7 +43,6 @@
     },
     {
         "asset" : "window",
-        "filepath" : "assets/sprites/EC-window.png",
         "options" : [
             {"option" : "scale",
                 "value" : {
@@ -61,7 +57,6 @@
     },
     {
         "asset" : "chair",
-        "filepath" : "assets/sprites/EC-chair.png",
         "options" : [
             {"option" : "scale",
                 "value" : {
@@ -70,12 +65,11 @@
                 }}
         ],
         "instances" : [
-            {"x" : -200, "y" : -50}
+            {"x" : 80, "y" : 580}
         ]
     },
     {
         "asset" : "desk",
-        "filepath" : "assets/sprites/EC-desk.png",
         "options" : [
             {"option" : "scale",
                 "value" : {
@@ -84,12 +78,11 @@
                 }}
         ],
         "instances" : [
-            {"x" : -200, "y" : -50}
+            {"x" : 220, "y" : 580}
         ]
     },
     {
         "asset" : "cabinets",
-        "filepath" : "assets/sprites/EC-cabinets.png",
         "options" : [
             {"option" : "scale",
                 "value" : {
@@ -98,7 +91,7 @@
                 }}
         ],
         "instances" : [
-            {"x" : -200, "y" : -50}
+            {"x" : 1400, "y" : 580}
         ]
     }
 ]

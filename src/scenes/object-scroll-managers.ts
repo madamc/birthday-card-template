@@ -203,10 +203,10 @@ export class ChaserScrollManager extends ObjectScrollManager {
         super.update();
         this.group.children.getArray().forEach(element => {
             let gameChildElement = element as Phaser.Physics.Arcade.Sprite;
-            if ((gameChildElement.x > (this.playerX - this.gameWidth/2)+(this.gameWidth/6)) && (gameChildElement.texture.key == 'runchase')&&(this.scene.player.body.enable))
-            {
-                gameChildElement.setVelocityX(1*this.speed);
-            }
+            // if ((gameChildElement.x > (this.playerX - this.gameWidth/2)+(this.gameWidth/6)) && (gameChildElement.texture.key == 'runchase')&&(this.scene.player.body.enable))
+            // {
+            //     gameChildElement.setVelocityX(1*this.speed);
+            // }
             if ((gameChildElement.x < (this.playerX - this.gameWidth/2)) && (gameChildElement.body.velocity.x < 0.9))
             {
                 this.group.killAndHide(element);
@@ -273,7 +273,7 @@ export class ChaserScrollManager extends ObjectScrollManager {
                 let chaser = manager.group.children.getArray()[manager.numbGener.integerInRange(0,manager.group.children.size - 1)] as Phaser.Physics.Arcade.Sprite;
                 if (chaser.body.velocity.x < 2*manager.speed - 20)
                 {
-                    manager.scene.chaserShot.play();
+                    //manager.scene.chaserShot.play();
                     bulletsManager.group.get(chaser.x, chaser.y, "block2", 3).setActive(true).setVisible(true).setVelocityX(4*manager.speed).setDepth(4);
                     chaser.play("chaserShoot");
                 }

@@ -2,7 +2,26 @@
 [
     {
     "asset" : "atari",
+    "text" : "quote",
+    "fontSize" : 30,
     "imagepath" : "assets/sprites/atari-classic-b.png",
-    "configpath" : "assets/sprites/atari-classic.xml"
+    "configpath" : "assets/sprites/atari-classic.xml",
+    "options" : [
+        {"option" : "scale",
+            "value" : {
+                "x" : 0.1,
+                "y" : 0.1
+            }},
+        {"option" : "origin",
+            "value" : {
+                "x" : 0,
+                "y" : 0
+            }},
+        {"option" : "maxWidth",
+            "value" : 1000}
+    ],
+    "instances" : [
+        {"x" : 500, "y" : 300}
+    ]
     }
 ]
