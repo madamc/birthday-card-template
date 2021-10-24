@@ -1,4 +1,5 @@
 import * as Phaser from 'phaser';
+import { MESSAGE_ITEMS } from './scenes/boot-scene';
 import { GameScene } from './scenes/game-scene';
 
 export const getGameWidth = (scene: Phaser.Scene): number => {
@@ -54,18 +55,21 @@ export function createTextBubble (scene: GameScene, width, height, quote, bubble
 
 export function collectItem (player, item)
 {
-  //
-  this.events.emit(item.event, item.text)
-  if (item.event == 'message4') {
+  let messageMap = (this.cache.json.entries.get(MESSAGE_ITEMS));
+  //console.log(item.texture.key)
+  this.events.emit(this.eventItemCol.get(item.texture.key).event, messageMap[this.eventItemCol.get(item.texture.key).subject]);
+  if (this.eventItemCol.get(item.texture.key).event == 'found door-closed') {
     item.disableBody(true, true);
-    item = item.secondObj
-    item.enableBody(true, 1590, 580, true, true);
+    //item = item.secondObj
+    //item.enableBody(true, 1590, 580, true, true);
+    this.triggerCollisionItemCol.get("door-open").enableBody(true, 1590, 580, true, true); 
     
   }
 }
 
 export function messageHandler(text) {
-  console.log(window.innerWidth);
+  console.log("Emmitted " + text);
+  //console.log(window.innerWidth);
   let charPixelWidth = 30;
   let width = text.length * charPixelWidth > 1000 ? 1000 : text.length * charPixelWidth;
   

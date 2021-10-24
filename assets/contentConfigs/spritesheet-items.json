@@ -1,0 +1,11 @@
+[
+    {
+        "asset" : "reeny",
+        "spritesheet" : {
+            "filepath" : "assets/sprites/Reeny3-Sheet.png",
+            "framewidth" : 16,
+            "frameheight" : 16
+        }
+        
+    }
+]

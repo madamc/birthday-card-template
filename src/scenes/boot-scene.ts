@@ -1,4 +1,4 @@
-import { getGameWidth, getGameHeight } from '../helpers';
+import { getGameWidth, getGameHeight, messageHandler } from '../helpers';
 
 const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
   active: false,
@@ -8,10 +8,14 @@ const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
 
 export const ANIMATED_ITEMS = "animated-items";
 export const BACKGROUND_ITEMS = "background-items";
+export const SINGLE_SPRITE_ITEMS = "single-sprite-items"
+export const SPRITESHEET_ITEMS = "spritesheet-items";
 export const TRIGGER_COLLISION_ITEMS = "trigger-collision-items";
 export const PLATFORM_ITEMS = "platform-items";
 export const SOUND_ITEMS = "sound-items";
 export const FONT_ITEMS = "font-items";
+export const MESSAGE_ITEMS = "message-items";
+export const EVENT_ITEMS = "event-items";
 /**
  * The initial scene that loads all necessary assets to the game and displays a loading bar.
  */
@@ -72,13 +76,17 @@ export class BootScene extends Phaser.Scene {
     });
     //load the json resources so that when this scene completes loading, the assets can be loaded in
     this.load.json(ANIMATED_ITEMS, 'assets/contentConfigs/animated-items.json');
+    this.load.json(SINGLE_SPRITE_ITEMS, 'assets/contentConfigs/single-sprite-items.json');
+    this.load.json(SPRITESHEET_ITEMS, 'assets/contentConfigs/spritesheet-items.json');
     this.load.json(BACKGROUND_ITEMS, 'assets/contentConfigs/background-items.json');
     this.load.json(TRIGGER_COLLISION_ITEMS, 'assets/contentConfigs/trigger-collision-items.json');
     this.load.json(PLATFORM_ITEMS, 'assets/contentConfigs/platform-items.json');
     this.load.json(SOUND_ITEMS, 'assets/contentConfigs/sound-items.json');
     this.load.json(FONT_ITEMS, 'assets/contentConfigs/font-items.json');
-    this.load.json('messages', 'assets/contentConfigs/messages.json');
-    // this.load.audio('song', 'assets/sounds/song.ogg');
+    this.load.json(EVENT_ITEMS, 'assets/contentConfigs/event-items.json');
+
+    //non-loadables
+    this.load.json(MESSAGE_ITEMS, 'assets/contentConfigs/message-items.json');    // this.load.audio('song', 'assets/sounds/song.ogg');
     // this.load.audio('typing', 'assets/sounds/typing.ogg');
   }
 
@@ -88,18 +96,15 @@ export class BootScene extends Phaser.Scene {
    * is currently active, so they can be accessed anywhere.
    */
   public loadAssets(filename) {
-    // Load sample assets
-    console.log("hellio");
-    console.log(this.cache.json.entries.entries);
-    
-    //this.cache.json.entries.each(map => {
+
     if (this.cache.json.entries.get(filename) != undefined)
     {
       let arr = Array.from(this.cache.json.entries.get(filename));
       switch (filename){
         case ANIMATED_ITEMS:
+          break;
+        case SPRITESHEET_ITEMS:
           arr.forEach((element:any) => {
-            console.log(element.asset);
             this.load.spritesheet(
               element.asset,
               element.spritesheet.filepath, 
@@ -109,14 +114,14 @@ export class BootScene extends Phaser.Scene {
               });
           });
           break;
-        case BACKGROUND_ITEMS:
+        case SINGLE_SPRITE_ITEMS:
           arr.forEach((element:any) => {
-            console.log(element.asset);
             this.load.image(
               element.asset,
               element.filepath);
           });
-          
+          break;
+        case BACKGROUND_ITEMS:
           break;
         case PLATFORM_ITEMS:
           break;
@@ -124,7 +129,6 @@ export class BootScene extends Phaser.Scene {
           break;
         case SOUND_ITEMS:
           arr.forEach((element:any) => {
-            console.log(element.asset);
             this.load.audio(
               element.asset,
               element.filepath);
@@ -132,18 +136,17 @@ export class BootScene extends Phaser.Scene {
           break;
         case FONT_ITEMS:
           arr.forEach((element:any) => {
-            console.log(element.asset);
             this.load.bitmapFont(
               element.asset,
               element.imagepath,
               element.configpath);
           });
+            
         default:
           break;
       }
     }
     else{
-      console.log(filename);
     }
     //});
     // this.load.bitmapFont('atari', 'assets/sprites/atari-classic-b.png', 'assets/sprites/atari-classic.xml');

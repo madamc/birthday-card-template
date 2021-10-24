@@ -1,0 +1,19 @@
+[
+    {
+        "asset" : "floor",
+        "filepath" : "assets/sprites/EC-floor.png",
+        "frame" : 0,
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 300,
+                    "y" : 10
+                }},
+            {"option" : "refresh",
+                "value" : "true"}
+        ],
+        "instances" : [
+            {"x" : 1200, "y" : 700}
+        ]
+    }
+]

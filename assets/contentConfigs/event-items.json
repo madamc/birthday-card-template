@@ -1,0 +1,44 @@
+[
+    {
+        "asset" : "chair",
+        "event" : "found chair",
+        "type" : "message",
+        "subject" : "greetings"
+        
+    },
+    {
+        "asset" : "plant",
+        "event" : "found plant",
+        "type" : "message",
+        "subject" : "found"
+        
+    },
+    {
+        "asset" : "fridge",
+        "event" : "found fridge",
+        "type" : "message",
+        "subject" : "found"
+        
+    },
+    {
+        "asset" : "door-closed",
+        "event" : "found door-closed",
+        "type" : "message",
+        "subject" : "greetings"
+        
+    },
+    {
+        "asset" : "door-open",
+        "event" : "found door-open",
+        "type" : "message",
+        "subject" : "finish"
+        
+    },
+    {
+        "asset" : "shelf",
+        "event" : "found shelf",
+        "type" : "message",
+        "subject" : "greetings"
+        
+    }
+]

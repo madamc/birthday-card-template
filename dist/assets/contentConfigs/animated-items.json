@@ -1,0 +1,52 @@
+[
+    {
+        "asset" : "reeny",
+        "instances" : [
+            {"x" : 100, "y" : 400}
+        ],
+        "options" : [
+            {"option" : "scale",
+            "value" : {
+                "x" : 10,
+                "y" : 10
+            }},
+            {"option" : "colliderWorldBounds",
+            "value" : "true"}
+        ],
+        "spritesheet" : {
+            "filepath" : "assets/sprites/Reeny3-Sheet.png",
+            "framewidth" : 16,
+            "frameheight" : 16
+        },
+        "animations" : [ 
+            {
+                "key" : "idle",
+                "frames" : [
+                    0,
+                    1
+                ],
+                "frameRate" : 2,
+                "repeat" : -1
+            },
+            {
+                "key" : "right",
+                "frames" : [
+                     2,
+                     3
+                ],
+                "frameRate" : 4,
+                "repeat" : -1
+            },
+            {
+                "key" : "left",
+                "frames" : [
+                     2,
+                     3
+                ],
+                "frameRate" : 4,
+                "repeat" : -1
+            }
+        ]
+        
+    }    
+]

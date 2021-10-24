@@ -8,41 +8,38 @@
             {"option" : "scale",
             "value" : {
                 "x" : 10,
-                "y" : 1
-            }}
+                "y" : 10
+            }},
+            {"option" : "colliderWorldBounds",
+            "value" : "true"}
         ],
-        "spritesheet" : {
-            "filepath" : "assets/sprites/Reeny3-Sheet.png",
-            "framewidth" : 16,
-            "frameheight" : 16
-        },
         "animations" : [ 
             {
                 "key" : "idle",
                 "frames" : [
-                { "frame" : 0},
-                { "frame" : 1}
+                    0,
+                    1
                 ],
                 "frameRate" : 2,
-                "repeate" : -1
+                "repeat" : -1
             },
             {
                 "key" : "right",
                 "frames" : [
-                    { "frame" : 2},
-                    { "frame" : 3}
+                     2,
+                     3
                 ],
                 "frameRate" : 4,
-                "repeate" : -1
+                "repeat" : -1
             },
             {
                 "key" : "left",
                 "frames" : [
-                    { "frame" : 2},
-                    { "frame" : 3}
+                     2,
+                     3
                 ],
                 "frameRate" : 4,
-                "repeate" : -1
+                "repeat" : -1
             }
         ]
         

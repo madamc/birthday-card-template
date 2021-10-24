@@ -1,0 +1,17 @@
+[
+    
+    {
+        "asset" : "song",
+        "filepath" : "assets/sounds/song.ogg",
+        "config" : {
+            "loop" : true
+        }
+    },
+    {
+        "asset" : "typing",
+        "filepath" : "assets/sounds/typing.ogg",
+        "config" : {
+            "loop" : false
+        }
+    }
+]

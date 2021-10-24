@@ -1,0 +1,104 @@
+[
+    {
+        "asset" : "sky",
+        "filepath" : "assets/sprites/EC-sky.png",
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 230,
+                    "y" : 88
+                }}
+        ],
+        "instances" : [
+            {"x" : 0, "y" : 0}
+        ]
+    },
+    {
+        "asset" : "clouds",
+        "filepath" : "assets/sprites/EC-clouds.png",
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 10,
+                    "y" : 10
+                }}
+        ],
+        "instances" : [
+            {"x" : 350, "y" : 500},
+            {"x" : 1025, "y" : 550}
+        ]
+    },
+    {
+        "asset" : "backwall",
+        "filepath" : "assets/sprites/EC-home2.png",
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 10,
+                    "y" : 10
+                }},
+            {"option" : "origin",
+                "value" : {"x" : 0, "y" : 0}}
+        ],
+        "instances" : [
+            {"x" : -200, "y" : -50}
+        ]
+    },
+    {
+        "asset" : "window",
+        "filepath" : "assets/sprites/EC-window.png",
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 10,
+                    "y" : 10
+                }}
+        ],
+        "instances" : [
+            {"x" : 360, "y" : 530},
+            {"x" : 990, "y" : 530}
+        ]
+    },
+    {
+        "asset" : "chair",
+        "filepath" : "assets/sprites/EC-chair.png",
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 10,
+                    "y" : 10
+                }}
+        ],
+        "instances" : [
+            {"x" : -200, "y" : -50}
+        ]
+    },
+    {
+        "asset" : "desk",
+        "filepath" : "assets/sprites/EC-desk.png",
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 10,
+                    "y" : 10
+                }}
+        ],
+        "instances" : [
+            {"x" : -200, "y" : -50}
+        ]
+    },
+    {
+        "asset" : "cabinets",
+        "filepath" : "assets/sprites/EC-cabinets.png",
+        "options" : [
+            {"option" : "scale",
+                "value" : {
+                    "x" : 10,
+                    "y" : 10
+                }}
+        ],
+        "instances" : [
+            {"x" : -200, "y" : -50}
+        ]
+    }
+]

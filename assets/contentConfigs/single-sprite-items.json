@@ -1,0 +1,61 @@
+[
+    {
+        "asset" : "sky",
+        "filepath" : "assets/sprites/EC-sky.png"
+        
+    },
+    {
+        "asset" : "clouds",
+        "filepath" : "assets/sprites/EC-clouds.png"
+          
+    },
+    {
+        "asset" : "backwall",
+        "filepath" : "assets/sprites/EC-home2.png"
+    },
+    {
+        "asset" : "window",
+        "filepath" : "assets/sprites/EC-window.png"
+        
+    },
+    {
+        "asset" : "chair",
+        "filepath" : "assets/sprites/EC-chair.png"
+    },
+    {
+        "asset" : "desk",
+        "filepath" : "assets/sprites/EC-desk.png"
+    },
+    {
+        "asset" : "cabinets",
+        "filepath" : "assets/sprites/EC-cabinets.png"
+    },
+    {
+        "asset" : "shelf",
+        "filepath" : "assets/sprites/EC-shelf.png"
+    },
+    {
+        "asset" : "plant",
+        "filepath" : "assets/sprites/EC-plant.png"
+    },
+    {
+        "asset" : "fridge",
+        "filepath" : "assets/sprites/EC-fridge.png"
+    },
+    {
+        "asset" : "door-closed",
+        "filepath" : "assets/sprites/EC-door-c.png"
+    },
+    {
+        "asset" : "floor",
+        "filepath" : "assets/sprites/EC-floor.png"
+    },
+    {
+        "asset" : "door-open",
+        "filepath" : "assets/sprites/EC-door-o.png"
+    },
+    {
+        "asset" : "offscreen",
+        "filepath" : "assets/sprites/offscreen.png"
+    }
+]
