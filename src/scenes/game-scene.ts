@@ -44,13 +44,9 @@ export class GameScene extends Phaser.Scene {
     this.soundItemCol = new Map<String, Phaser.Sound.BaseSound>();
     this.eventItemCol = new  Map<String, Map<String, String>>();
     this.fontItemCol = new Map<String, Phaser.GameObjects.Text | Phaser.GameObjects.BitmapText>();
-    //iterate through the json files
-    //this.song = this.sound.add('song', {loop: true});
   }
 
   public create() {
-
-    //register sounds and music
     
     this.fabricateBackgroundItems();
     this.fabricatePlatformItems();
@@ -61,14 +57,8 @@ export class GameScene extends Phaser.Scene {
     this.fabricateFontItems();
     this.soundItemCol.get("song").play();
 
-    //TODO
-    //make sure to associate an event name with each object
-
-    //initialize message texts
-    //initialize the texts in the scene1content class file
     this.typingHelper = {text: '', counter: 0, typeSound: this.soundItemCol.get("typing")};
     
-
     this.player = this.animItemCol.get("reeny");
     this.playerDir = 'right';
 
@@ -79,35 +69,23 @@ export class GameScene extends Phaser.Scene {
     topBlack.scaleY = 15;
     bottomBlack.scaleX = 150;
     bottomBlack.scaleY = 15;
-    
   
     //initialize bubble, bitmaptext, and the messages
     this.bubble1 = this.add.graphics({ x: window.innerWidth/2, y: 200 });
     this.message1 = this.add.bitmapText(window.innerWidth/2, 300, 'atari', "quote", 30, Phaser.GameObjects.BitmapText.ALIGN_LEFT).setMaxWidth(1000).setOrigin(0).setScale(1);
     this.message1.visible = false;
-
-    
-    //initialize with message Finite State Machine
+      
+      //initialize with message Finite State Machine
     this.messageFSM = new StateMachine('idle', {
       idle: new States.IdleState(),
       move: new States.MoveState(),
       show: new States.ShowMessageState()
     }, [this, this.player, this.playerDir, this.message1, this.bubble1, this.typingHelper]);
 
-
-    
-    //create the events that will trigger the messages
-    //TODO make function that iterates through the trigger collision items
-    //Load animations from JSON file
-    //this.physics.add.image(50,50, 'shelf').setScale(10)
-  //register collisions between every 2 objects and collect logic between ever 2 objects
-  //TODO create a function where you send a collection of objects to be registered with any one object
-  this.setCollisionables(this.triggerCollisionItemCol.values(), this.platformItemCol.get("floor"), this.triggerCollisionItemCol.size);
-  this.setTriggerables(this.triggerCollisionItemCol.values(), this.animItemCol.get("reeny"), this.triggerCollisionItemCol.size);
-  this.physics.add.collider(this.player, this.platformItemCol.get("floor"));
-
-  //obj4.secondObj.disableBody(true, true);
-    
+    this.setCollisionables(this.triggerCollisionItemCol.values(), this.platformItemCol.get("floor"), this.triggerCollisionItemCol.size);
+    this.setTriggerables(this.triggerCollisionItemCol.values(), this.animItemCol.get("reeny"), this.triggerCollisionItemCol.size);
+    this.physics.add.collider(this.player, this.platformItemCol.get("floor"));
+      
   }
 
   
