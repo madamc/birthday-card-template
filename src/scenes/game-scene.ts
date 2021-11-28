@@ -15,6 +15,7 @@ export class GameScene extends Phaser.Scene {
   protected square: Phaser.GameObjects.Rectangle & { body: Phaser.Physics.Arcade.Body };
   bubble1: Phaser.GameObjects.Graphics;
   message1: Phaser.GameObjects.BitmapText;
+  spacePrompt: Phaser.GameObjects.BitmapText;
   sceneItems: Array<Object>;
   //TODO Add another bitmaptext saying to press space to continue in white letters
   typingHelper: {text: string, counter: number, typeSound: Phaser.Sound.BaseSound};
@@ -31,6 +32,10 @@ export class GameScene extends Phaser.Scene {
   soundItemCol: Map<String, Phaser.Sound.BaseSound>;
   eventItemCol: Map<String, Map<String, String>>;
   fontItemCol: Map<String, Phaser.GameObjects.Text | Phaser.GameObjects.BitmapText>;
+  backGroundItemFilter: Array<String>;
+  triggerCollisionItemFilter: Array<String>;
+  animItemFilter: Array<String>;
+  eventItemFilter: Array<String>;
 
   constructor(scnConfig) {
     super(scnConfig);
@@ -44,6 +49,10 @@ export class GameScene extends Phaser.Scene {
     this.soundItemCol = new Map<String, Phaser.Sound.BaseSound>();
     this.eventItemCol = new  Map<String, Map<String, String>>();
     this.fontItemCol = new Map<String, Phaser.GameObjects.Text | Phaser.GameObjects.BitmapText>();
+    this.backGroundItemFilter = new Array<String>();
+    this.triggerCollisionItemFilter = new Array<String>();
+    this.animItemFilter = new Array<String>();
+    this.eventItemFilter = new Array<String>();
   }
 
   public create() {
@@ -96,6 +105,7 @@ export class GameScene extends Phaser.Scene {
 
   protected fabricateAnimatedItems() {
     let arr = Array.from(this.cache.json.entries.get(ANIMATED_ITEMS));
+    arr = this.filterArrayWithStringArray(arr, this.animItemFilter);
     arr.forEach((element:any) => {
       let instances = Array.from(element.instances);
       instances.forEach((instance:any) => {
@@ -132,6 +142,8 @@ export class GameScene extends Phaser.Scene {
 
   protected fabricateBackgroundItems() {
     let arr = Array.from(this.cache.json.entries.get(BACKGROUND_ITEMS));
+    arr = this.filterArrayWithStringArray(arr, this.backGroundItemFilter);
+
     arr.forEach((element:any) => {
       
       let instances = Array.from(element.instances);
@@ -228,6 +240,7 @@ export class GameScene extends Phaser.Scene {
 
   protected fabricateTriggerCollisionItems() {
     let arr = Array.from(this.cache.json.entries.get(TRIGGER_COLLISION_ITEMS));
+    arr = this.filterArrayWithStringArray(arr, this.triggerCollisionItemFilter);
     arr.forEach((element:any) => {
       
       let instances = Array.from(element.instances);
@@ -283,6 +296,14 @@ export class GameScene extends Phaser.Scene {
     
   }
   
+  protected filterArrayWithStringArray(arrayToFilter: Array<any>, stringArray: Array<String>) {
+    if (stringArray.length > 0) {
+      arrayToFilter = arrayToFilter.filter((element:any) => {
+        return stringArray.includes(element.asset);
+      });
+    }
+    return arrayToFilter;
+  }
 }
 
 
